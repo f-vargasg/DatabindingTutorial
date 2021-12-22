@@ -29,67 +29,42 @@ namespace DatabindingTutorial.WinformUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.grid = new System.Windows.Forms.DataGridView();
             this.txtModel = new System.Windows.Forms.TextBox();
-            this.airplaneBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fuelLeftKgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.airplaneBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // grid
             // 
-            this.grid.AutoGenerateColumns = false;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
-            this.fuelLeftKgDataGridViewTextBoxColumn,
-            this.modelDataGridViewTextBoxColumn});
-            this.grid.DataSource = this.airplaneBindingSource;
-            this.grid.Location = new System.Drawing.Point(12, 79);
+            this.grid.Location = new System.Drawing.Point(12, 12);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(724, 258);
+            this.grid.Size = new System.Drawing.Size(487, 196);
             this.grid.TabIndex = 0;
             // 
             // txtModel
             // 
-            this.txtModel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.airplaneBindingSource, "Model", true));
-            this.txtModel.Location = new System.Drawing.Point(110, 27);
+            this.txtModel.Location = new System.Drawing.Point(85, 224);
             this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(382, 22);
+            this.txtModel.Size = new System.Drawing.Size(414, 22);
             this.txtModel.TabIndex = 1;
             // 
-            // airplaneBindingSource
+            // label1
             // 
-            this.airplaneBindingSource.DataSource = typeof(DatabindingTutorial.WinformUI.Airplane);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fuelLeftKgDataGridViewTextBoxColumn
-            // 
-            this.fuelLeftKgDataGridViewTextBoxColumn.DataPropertyName = "FuelLeftKg";
-            this.fuelLeftKgDataGridViewTextBoxColumn.HeaderText = "FuelLeftKg";
-            this.fuelLeftKgDataGridViewTextBoxColumn.Name = "fuelLeftKgDataGridViewTextBoxColumn";
-            // 
-            // modelDataGridViewTextBoxColumn
-            // 
-            this.modelDataGridViewTextBoxColumn.DataPropertyName = "Model";
-            this.modelDataGridViewTextBoxColumn.HeaderText = "Model";
-            this.modelDataGridViewTextBoxColumn.Name = "modelDataGridViewTextBoxColumn";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Model:";
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 391);
+            this.ClientSize = new System.Drawing.Size(525, 293);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtModel);
             this.Controls.Add(this.grid);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,7 +73,6 @@ namespace DatabindingTutorial.WinformUI
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.airplaneBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,10 +82,7 @@ namespace DatabindingTutorial.WinformUI
 
         private System.Windows.Forms.DataGridView grid;
         private System.Windows.Forms.TextBox txtModel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fuelLeftKgDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn modelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource airplaneBindingSource;
+        private System.Windows.Forms.Label label1;
     }
 }
 
