@@ -20,29 +20,32 @@ namespace DatabindingTutorial.WinformUI
             InitializeComponent();
         }
 
+        Airplane a = new Airplane("Boeing 747", 800);
+
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            bs.DataSource = typeof(Airplane);
+            a.Passengers.Add(new Passenger("Joe Shmuck"));
+            a.Passengers.Add(new Passenger("Jack B. Nimble"));
+            a.Passengers.Add(new Passenger("Jane Doe"));
+            a.Passengers.Add(new Passenger("John Smith"));
 
-            bs.Add(new Airplane("Boeing 747", 800));
-            // bs.Add(new Airplane("Airbus A380", 1023));
-            bs.DataSource = new Airplane("Airbus A380", 1023);
-            bs.Add(new Airplane("Cessna 162", 67));
-
-            grid.DataSource = bs;
+            grid.DataSource = a;
+            grid.DataMember = "Passengers";
             grid.AutoGenerateColumns = true;
-            txtModel.DataBindings.Add("Text", bs, "Model");
+            txtModel.DataBindings.Add("Text", a, "Model");
 
-            bs.AddingNew += (s, ev) => Debug.WriteLine("AddingNew");
-            bs.BindingComplete += (s, ev) => Debug.WriteLine("BindingComplete");
-            bs.CurrentChanged += (s, ev) => Debug.WriteLine("CurrentChanged");
-            bs.CurrentItemChanged += (s, ev) => Debug.WriteLine("CurrentItemChanged");
-            bs.DataError += (s, ev) => Debug.WriteLine("DataError");
-            bs.DataMemberChanged += (s, ev) => Debug.WriteLine("DataMemberChanged");
-            bs.DataSourceChanged += (s, ev) => Debug.WriteLine("DataSourceChanged");
-            bs.ListChanged += (s, ev) => Debug.WriteLine("ListChanged");
-            bs.PositionChanged += (s, ev) => Debug.WriteLine("PositionChanged");
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string msg = string.Format("The last passenger on this {0} is named {1}. Add another passenger?",
+                                        a.Model, a.Passengers[a.Passengers.Count - 1].Name);
+            if (MessageBox.Show(msg, "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                a.Passengers.Add(new Passenger("New Passenger"));
+                grid.ResetBindings();
+            }
         }
     }
 }
