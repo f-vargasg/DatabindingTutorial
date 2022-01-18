@@ -33,6 +33,8 @@ namespace DatabindingTutorial.WinformUI
             this.txtModel = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.lstPassengers = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,11 +72,31 @@ namespace DatabindingTutorial.WinformUI
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // lstPassengers
+            // 
+            this.lstPassengers.FormattingEnabled = true;
+            this.lstPassengers.ItemHeight = 16;
+            this.lstPassengers.Location = new System.Drawing.Point(539, 48);
+            this.lstPassengers.Name = "lstPassengers";
+            this.lstPassengers.Size = new System.Drawing.Size(204, 148);
+            this.lstPassengers.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(536, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(193, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Passengers on selected plane:";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 266);
+            this.ClientSize = new System.Drawing.Size(767, 266);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lstPassengers);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtModel);
@@ -96,6 +118,8 @@ namespace DatabindingTutorial.WinformUI
         private System.Windows.Forms.TextBox txtModel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox lstPassengers;
+        private System.Windows.Forms.Label label2;
     }
 }
 

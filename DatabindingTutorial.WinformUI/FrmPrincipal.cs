@@ -24,16 +24,24 @@ namespace DatabindingTutorial.WinformUI
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            a.Passengers.Add(new Passenger("Joe Shmuck"));
-            a.Passengers.Add(new Passenger("Jack B. Nimble"));
-            a.Passengers.Add(new Passenger("Jane Doe"));
-            a.Passengers.Add(new Passenger("John Smith"));
+            // Create some example data.
+            Airplane a1, a2, a3;
+            bs.Add(a1 = new Airplane("Boeing 747", 800));
+            bs.Add(a2 = new Airplane("Airbus A380", 1023));
+            bs.Add(a3 = new Airplane("Cessna 162", 67));
+            a1.Passengers.Add(new Passenger("Joe Shmuck"));
+            a1.Passengers.Add(new Passenger("Jack B. Nimble"));
+            a1.Passengers.Add(new Passenger("Jib Jab"));
+            a2.Passengers.Add(new Passenger("Jackie Tyler"));
+            a2.Passengers.Add(new Passenger("Jane Doe"));
+            a3.Passengers.Add(new Passenger("John Smith"));
 
-            grid.DataSource = a;
-            grid.DataMember = "Passengers";
+            // Set up data binding
+            grid.DataSource = bs;
             grid.AutoGenerateColumns = true;
-            txtModel.DataBindings.Add("Text", a, "Model");
-
+            lstPassengers.DataSource = bs;
+            lstPassengers.DisplayMember = "Passengers.Name";
+            txtModel.DataBindings.Add("Text", bs, "Model");
 
         }
 
