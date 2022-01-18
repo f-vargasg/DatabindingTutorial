@@ -13,7 +13,9 @@ namespace DatabindingTutorial.WinformUI
 {
     public partial class FrmPrincipal : Form
     {
-        BindingSource bs = new BindingSource();
+        BindingSource bsA = new BindingSource(); // Airplanes
+        BindingSource bsP = new BindingSource(); // Passengers
+
 
         public FrmPrincipal()
         {
@@ -24,24 +26,38 @@ namespace DatabindingTutorial.WinformUI
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            // Create some example data.
-            Airplane a1, a2, a3;
-            bs.Add(a1 = new Airplane("Boeing 747", 800));
-            bs.Add(a2 = new Airplane("Airbus A380", 1023));
-            bs.Add(a3 = new Airplane("Cessna 162", 67));
-            a1.Passengers.Add(new Passenger("Joe Shmuck"));
-            a1.Passengers.Add(new Passenger("Jack B. Nimble"));
-            a1.Passengers.Add(new Passenger("Jib Jab"));
-            a2.Passengers.Add(new Passenger("Jackie Tyler"));
-            a2.Passengers.Add(new Passenger("Jane Doe"));
-            a3.Passengers.Add(new Passenger("John Smith"));
+            // Create DataSet and connect it to the BindingSources  //**
+            DataSet ds = CreateAirplaneSchema();                    //** 
+            DataTable airplanes = ds.Tables["Airplane"];            //** 
+            DataTable passengers = ds.Tables["Passenger"];          //** 
+            bsA.DataSource = ds;                                    //** 
+            bsP.DataSource = ds;                                    //** 
+            bsA.DataMember = airplanes.TableName;                   //** 
+            bsP.DataMember = passengers.TableName;                  //** 
 
-            // Set up data binding
-            grid.DataSource = bs;
+            // Create some example data in the DataSet.             //** 
+            DataRow a1, a2, a3;                                     //** 
+            a1 = airplanes.Rows.Add(null, "Boeing 747", 800);       //** 
+            a2 = airplanes.Rows.Add(null, "Airbus A380", 1023);     //** 
+            a3 = airplanes.Rows.Add(null, "Cessna 162", 67);        //** 
+            passengers.Rows.Add(null, a1["ID"], "Joe Shmuck");      //** 
+            passengers.Rows.Add(null, a1["ID"], "Jack B. Nimble");  //** 
+            passengers.Rows.Add(null, a1["ID"], "Jib Jab");         //** 
+            passengers.Rows.Add(null, a2["ID"], "Jackie Tyler");    //** 
+            passengers.Rows.Add(null, a2["ID"], "Jane Doe");        //** 
+            passengers.Rows.Add(null, a3["ID"], "John Smith");      //** 
+
+            // Set up data binding for the parent Airplanes
+            grid.DataSource = bsA;
             grid.AutoGenerateColumns = true;
-            lstPassengers.DataSource = bs;
-            lstPassengers.DisplayMember = "Passengers.Name";
-            txtModel.DataBindings.Add("Text", bs, "Model");
+            txtModel.DataBindings.Add("Text", bsA, "Model");
+
+            // Set up data binding for the child Passengers
+            bsP.DataSource = bsA; // chaining bsP to bsA
+            bsP.DataMember = "Airplane_Passengers";                 //** 
+            lstPassengers.DataSource = bsP;
+            lstPassengers.DisplayMember = "Name";
+            txtName.DataBindings.Add("Text", bsP, "Name");
 
         }
 
@@ -54,6 +70,36 @@ namespace DatabindingTutorial.WinformUI
                 a.Passengers.Add(new Passenger("New Passenger"));
                 grid.ResetBindings();
             }
+        }
+
+        DataSet CreateAirplaneSchema()
+        {
+            DataSet ds = new DataSet();
+
+            // Create Airplane table
+            DataTable airplanes = ds.Tables.Add("Airplane");
+            DataColumn a_id = airplanes.Columns.Add("ID", typeof(int));
+            airplanes.Columns.Add("Model", typeof(string));
+            airplanes.Columns.Add("FuelLeftKg", typeof(int));
+            a_id.AutoIncrement = true;
+            a_id.AutoIncrementSeed = 1;
+            a_id.AutoIncrementStep = 1;
+
+            // Create Passengers table
+            DataTable passengers = ds.Tables.Add("Passenger");
+            DataColumn p_id = passengers.Columns.Add("ID", typeof(int));
+            passengers.Columns.Add("AirplaneID", typeof(int));
+            passengers.Columns.Add("Name", typeof(string));
+            p_id.AutoIncrement = true;
+            p_id.AutoIncrementSeed = 1;
+            p_id.AutoIncrementStep = 1;
+
+            // Create parent-child relationship
+            DataRelation relation = ds.Relations.Add("Airplane_Passengers",
+                airplanes.Columns["ID"],
+                passengers.Columns["AirplaneID"], true);
+
+            return ds;
         }
     }
 }
