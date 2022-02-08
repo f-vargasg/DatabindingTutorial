@@ -26,6 +26,7 @@ namespace DatabindingTutorial.WinformUI
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            bsP.ListChanged += BsP_ListChanged;
             // Create DataSet and connect it to the BindingSources  //**
             DataSet ds = CreateAirplaneSchema();                    //** 
             DataTable airplanes = ds.Tables["Airplane"];            //** 
@@ -59,6 +60,14 @@ namespace DatabindingTutorial.WinformUI
             lstPassengers.DisplayMember = "Name";
             txtName.DataBindings.Add("Text", bsP, "Name");
 
+        }
+
+        private void BsP_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            // ListChangedType.Reset indicates that the entire list changed.   //** 
+            // ListChanged is also raised when rows/columns are added/removed. //** 
+            if (e.ListChangedType == ListChangedType.Reset)                    //** 
+                txtName.Enabled = bsP.Current != null;                         //** 
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,6 +109,12 @@ namespace DatabindingTutorial.WinformUI
                 passengers.Columns["AirplaneID"], true);
 
             return ds;
+        }
+
+        private void btnForm2_Click(object sender, EventArgs e)
+        {
+            Form2 frm = new Form2(this.bsA, this.bsP);
+            frm.Show();
         }
     }
 }

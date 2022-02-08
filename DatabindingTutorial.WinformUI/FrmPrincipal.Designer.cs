@@ -37,15 +37,16 @@ namespace DatabindingTutorial.WinformUI
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.btnForm2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // grid
             // 
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid.Location = new System.Drawing.Point(12, 12);
+            this.grid.Location = new System.Drawing.Point(12, 29);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(501, 196);
+            this.grid.Size = new System.Drawing.Size(501, 179);
             this.grid.TabIndex = 0;
             // 
             // txtModel
@@ -108,11 +109,22 @@ namespace DatabindingTutorial.WinformUI
             this.txtName.Size = new System.Drawing.Size(140, 22);
             this.txtName.TabIndex = 7;
             // 
+            // btnForm2
+            // 
+            this.btnForm2.Location = new System.Drawing.Point(68, 2);
+            this.btnForm2.Name = "btnForm2";
+            this.btnForm2.Size = new System.Drawing.Size(104, 27);
+            this.btnForm2.TabIndex = 8;
+            this.btnForm2.Text = "Form 2";
+            this.btnForm2.UseVisualStyleBackColor = true;
+            this.btnForm2.Click += new System.EventHandler(this.btnForm2_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 266);
+            this.Controls.Add(this.btnForm2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -142,6 +154,7 @@ namespace DatabindingTutorial.WinformUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnForm2;
     }
 }
 
