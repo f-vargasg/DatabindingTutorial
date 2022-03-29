@@ -27,6 +27,7 @@ namespace DatabindingTutorial.Example4
 
         public Emp(string pName, string pJob, decimal pSal)
         {
+            ID=last_ID++;
             this.Name = pName;
             this.Job = pJob;
             this.Sal = pSal;

@@ -41,6 +41,8 @@
             this.dgrDepts.Name = "dgrDepts";
             this.dgrDepts.Size = new System.Drawing.Size(492, 163);
             this.dgrDepts.TabIndex = 0;
+            this.dgrDepts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrDepts_CellClick);
+            this.dgrDepts.CurrentCellChanged += new System.EventHandler(this.dgrDepts_CurrentCellChanged);
             // 
             // dgrEmps
             // 
