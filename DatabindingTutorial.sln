@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabindingTutorial.Winform
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabindingTutorial.Example4", "DatabindingTutorial.Example4\DatabindingTutorial.Example4.csproj", "{D81D94D6-7C44-4779-A016-F004ED76686C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabindingTutorial.Example5", "DatabindingTutorial.Example5\DatabindingTutorial.Example5.csproj", "{A48F002E-4EE4-4A98-9E16-79D9E5B93F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabindingTutorial.BE", "DatabindingTutorial.BE\DatabindingTutorial.BE.csproj", "{BB26A351-0191-4A1C-AC3A-38937F7FFB5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{D81D94D6-7C44-4779-A016-F004ED76686C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D81D94D6-7C44-4779-A016-F004ED76686C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D81D94D6-7C44-4779-A016-F004ED76686C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A48F002E-4EE4-4A98-9E16-79D9E5B93F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A48F002E-4EE4-4A98-9E16-79D9E5B93F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A48F002E-4EE4-4A98-9E16-79D9E5B93F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A48F002E-4EE4-4A98-9E16-79D9E5B93F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB26A351-0191-4A1C-AC3A-38937F7FFB5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB26A351-0191-4A1C-AC3A-38937F7FFB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB26A351-0191-4A1C-AC3A-38937F7FFB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB26A351-0191-4A1C-AC3A-38937F7FFB5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
