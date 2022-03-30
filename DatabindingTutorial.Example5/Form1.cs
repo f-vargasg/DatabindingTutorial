@@ -43,18 +43,17 @@ namespace DatabindingTutorial.Example5
             bsDept = new BindingSource(BindingList, null);
             dgrDepts.DataSource = bsDept;
             dgrDepts.AutoGenerateColumns = true;
-            lstEmps.DataSource = bsDept;
-            lstEmps.DisplayMember = "Emps.Name";
+            dgrEmps.DataSource = bsDept;
             txtNomDept.DataBindings.Add("Text", bsDept, "Name");
 
             bsEmp = new BindingSource();
             bsEmp.DataSource = bsDept;
             bsEmp.DataMember = "Emps";
-            lstEmps.DataSource = bsEmp;
-            lstEmps.DisplayMember = "Name";
+            dgrEmps.DataSource = bsEmp;
             txtEmpName.DataBindings.Add("Text", bsEmp, "Name");
 
-
+            bdNavDept.BindingSource = bsDept;
+            bdNavEmp.BindingSource = bsEmp;
         }
 
         private void Form1_Load(object sender, EventArgs e)
